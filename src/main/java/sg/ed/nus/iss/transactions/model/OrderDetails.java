@@ -12,7 +12,8 @@ public class OrderDetails {
     private Double discount;
     
 
-    public List<OrderDetails> orderDetails = new ArrayList<OrderDetails>();
+    public static List<OrderDetails> orderDetails = new ArrayList<OrderDetails>();
+
     
     public OrderDetails() {
     }
@@ -87,6 +88,26 @@ public class OrderDetails {
                 + "]";
     }
 
+    public static Double calculateUnitPrice(String product, Integer quantity){
+
+        Double unitPrice=0d;
+        Double totalPrice;
+        // return unitprice = (double) (2*quantity);
 
 
+        List<OrderDetails> orderDetails = OrderDetails.orderDetails;
+
+        for (OrderDetails orderdetail: orderDetails){
+            if(orderdetail.getProduct().equalsIgnoreCase(product)){
+                unitPrice = orderdetail.getUnitPrice();
+            }
+        }
+
+        totalPrice = unitPrice*quantity;
+        return totalPrice;
+
+ 
+    }   
+
+    
 }

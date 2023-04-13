@@ -26,7 +26,7 @@ create table orders(
 create table order_details(
     id INT AUTO_INCREMENT PRIMARY KEY,
     product VARCHAR(128),
-    unit_price DECIMAL(3, 2),
+    unit_price DECIMAL(4, 2),
     discount DECIMAL(2,1) DEFAULT 1.0,
     tax DECIMAL (2,2) DEFAULT 0.05,
     quantity INT,

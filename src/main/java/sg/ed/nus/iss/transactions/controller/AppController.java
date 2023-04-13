@@ -21,12 +21,19 @@ import sg.ed.nus.iss.transactions.service.OrderService;
 @RequestMapping
 public class AppController {
     
+    boolean reset = false;
     @Autowired
     OrderService orderservice;
 
     @PostMapping(path = "/add", consumes =  "application/x-www-form-urlencoded")
     public String addOrder(HttpServletRequest httpRequest, Model m, HttpSession session){
 
+        if (reset == true){
+            reset = false;
+            List<OrderDetails> orderdetails = (List<OrderDetails>) session.getAttribute("orderdetails");
+            orderdetails.clear();
+            session.setAttribute("orderdetails", orderdetails);
+        }
         List<OrderDetails> orderdetails = (List<OrderDetails>) session.getAttribute("orderdetails");
         if(null == orderdetails){
             orderdetails = new ArrayList<OrderDetails>();
@@ -60,20 +67,17 @@ public class AppController {
         //retrieve order session which was set in previous controller
         Order order = (Order) session.getAttribute("order");
 
-    // orderId;
-    // orderDate;
-    // customerName;
-    // shipAddress;
-    // notes; 
-    // tax;
-    List<OrderDetails> orderDetails = new ArrayList<OrderDetails>();
         //place form info into model
         order.setCustomerName(name);
         order.setShipAddress(shipAddress);
         order.setNotes(notes);
         orderservice.createOrder(order);
         m.addAttribute("order", order);
-        
+
+        // orderdetails.clear();
+        // session.setAttribute("orderdetails", orderdetails);
+
+        reset = true;
         return "checkout";
 
     }

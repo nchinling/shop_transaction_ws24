@@ -1,11 +1,13 @@
 package sg.ed.nus.iss.transactions.service;
 
+import java.util.List;
 import java.util.Random;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import sg.ed.nus.iss.transactions.model.Order;
+import sg.ed.nus.iss.transactions.model.OrderDetails;
 import sg.ed.nus.iss.transactions.repository.OrderRepository;
 
 @Service
@@ -24,8 +26,8 @@ public class OrderService {
 
         order.setOrderId(ordId);
 
-        //retrieves list of fruit products from purchase order details
-        // FruitProducts.fruitProducts = itemRepository.getProducts();
+        // retrieves list of products from purchase order details
+        OrderDetails.orderDetails = orderrepo.getProducts();
 
         //insert order info eg. customer name, ship_addressm notes into order table
         orderrepo.insertOrder(order);

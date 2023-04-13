@@ -13,21 +13,25 @@ public class Order {
     private String shipAddress;
     private String notes; 
     private Double tax;
+    private Integer total;
     public List<OrderDetails> orderDetails = new ArrayList<OrderDetails>();
     
     public Order() {
     }
 
     public Order(Integer orderId, LocalDate orderDate, String customerName, String shipAddress, String notes,
-            Double tax, List<OrderDetails> orderDetails) {
+            Double tax, Integer total, List<OrderDetails> orderDetails) {
         this.orderId = orderId;
         this.orderDate = orderDate;
         this.customerName = customerName;
         this.shipAddress = shipAddress;
         this.notes = notes;
         this.tax = tax;
+        this.total = total;
         this.orderDetails = orderDetails;
     }
+
+
 
     public void setTax(Double tax) {
         this.tax = tax;
@@ -95,6 +99,18 @@ public class Order {
                 + ", shipAddress=" + shipAddress + ", notes=" + notes + ", tax=" + tax + ", orderDetails="
                 + orderDetails + "]";
     }
+
+    public Integer getTotal() {
+        return orderDetails.size();
+    }
+
+    public void setTotal(Integer total) {
+        this.total = total;
+    }
+
+    
+
+    
 
 
 }

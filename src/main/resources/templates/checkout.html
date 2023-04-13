@@ -8,28 +8,37 @@
 </head>
 <body data-th-object="${order}">
   
-    <div class="container" align="center">
+    <!-- <div class="container" align="center"> -->
+        <div>
         <h1>Your order</h1>
+
+        <h1>Thank you for shopping with us</h1>
+
+        <h2>You have bought <span data-th-text="*{total}"></span> items</h2>
 
         <table>
             <tr>
-                <td><h2>Name</h2></td>
-                <td><h2 data-th-text="*{customerName}"></h2></td>
+                <td>Name</td>
+                <td><p data-th-text="*{customerName}"></p></td>
             </tr>
             <br>
             <tr>
-                <td><h2>Shipping Address</h2></td>
-                <td><h2 data-th-text="*{shipAddress}"></h2></td>
+                <td>Shipping Address</td>
+                <td><p data-th-text="*{shipAddress}"></p></td>
             </tr>
             <br>
             <tr>
-                <td><h2>Notes</h2></td>
-                <td><h2 data-th-text="*{notes}"></h2></td>
+                <td>Notes</td>
+                <td><p data-th-text="*{notes}"></p></td>
             </tr>
     
             <br>
         </table>
 
+
+
     </div>
+
+    <h3>Shop <a href="index.html">again</a>?</h3>
 </body>
 </html>

@@ -28,12 +28,13 @@ public class OrderRepository {
 
     public void insertOrderDetails(List<OrderDetails> orderdetails, String orderId){
         
+        
         List<Object[]> data = orderdetails.stream().map(li ->{
 
             Object[] l = new Object[4];
             l[0] = li.getProduct();
-            // l[1] = OrderUtility.calculateUnitPrice(li.getProduct(), li.getQuantity());
-            l[1] = 2; // unit price
+            l[1] = OrderDetails.calculateUnitPrice(li.getProduct(), li.getQuantity());
+            // l[1] = 2; // unit price
             l[2] = li.getQuantity();
             l[3] = orderId;
             return l;
@@ -41,6 +42,21 @@ public class OrderRepository {
         }).toList();
     
         jdbcTemplate.batchUpdate(INSERT_ORDER_DETAILS, data) ;
+
+    }
+
+    public List<OrderDetails> getProducts(){
+        String query = GET_ALL_PRODUCTS;
+
+        return jdbcTemplate.query(query, (rs, rownum) -> {
+
+            OrderDetails orderdetail = new OrderDetails();
+            orderdetail.setId(rs.getInt("id"));
+            orderdetail.setProduct(rs.getString("product_name"));
+            orderdetail.setUnitPrice(rs.getDouble("product_cost"));
+            // orderdetail.setDiscount(rs.getBigDecimal("discount"));
+            return orderdetail; 
+        });
 
     }
 
