@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Shopping Cart</h1>
+
+    <form method="POST" action="/add">
+      <table>
+       
+        <tr>
+          <td>Item:</td>
+          <td>
+            <select name="item" required>
+              <option value="" disabled selected>Select an item</option>
+              <option value="Milo">Milo</option>
+              <option value="Milk">Milk</option>
+              <option value="Potato Chips">Potato Chips</option>
+              <option value="Bread">Bread</option>
+              <option value="Apple">Apple</option>
+              <option value="Panadol">Panadol</option>
+              <option value="Tissue Paper">Tissue Paper</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Quantity:</td>
+          <td><input type="number" name="quantity" min="1" /></td>
+        </tr>
+        
+       
+        <tr>
+          <td></td>
+          <td><button type="submit">Add</button></td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>

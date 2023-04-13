@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body data-th-object="${order}">
+  
+    <div class="container" align="center">
+        <h1>Your order</h1>
+
+        <table>
+            <tr>
+                <td><h2>Name</h2></td>
+                <td><h2 data-th-text="*{customerName}"></h2></td>
+            </tr>
+            <br>
+            <tr>
+                <td><h2>Shipping Address</h2></td>
+                <td><h2 data-th-text="*{shipAddress}"></h2></td>
+            </tr>
+            <br>
+            <tr>
+                <td><h2>Notes</h2></td>
+                <td><h2 data-th-text="*{notes}"></h2></td>
+            </tr>
+    
+            <br>
+        </table>
+
+    </div>
+</body>
+</html>
